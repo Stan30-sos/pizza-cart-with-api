@@ -13,6 +13,11 @@ document.addEventListener('alpine:init', () => {
 
         },
         pizzaList : [],
+
+        add(pizza){
+          alert(pizza.flavour + " : " + pizza.size)
+
+        }
       }
     })
 })
