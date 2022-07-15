@@ -33,12 +33,26 @@ document.addEventListener('alpine:init', () => {
               });
 
         },
+        payCart(){
+
+          const url = `https://pizza-cart-api.herokuapp.com/api/pizza-cart/${this.cartId}/get`;
+
+          axios
+              .get(url)
+              .then((result) => {
+                this.cart = result.data.total;
+              });
+
+        },
 
         message: 'Eating Pizzas',
         pizzaList : [],
         userName:'',
         cartId:'',
         cart: {total:0},
+        checkout: false,
+        paymentAmount: 0,
+        paymentMessage: '',
 
         add(pizza){
 
@@ -75,6 +89,40 @@ document.addEventListener('alpine:init', () => {
             .catch(err => alert(err));
 
     },
+
+    pay(pizza){
+
+      const params = {
+        cart_code: this.cartId,
+      }
+      
+      axios
+          .post('https://pizza-cart-api.herokuapp.com/api/pizza-cart/pay', params)
+          .then(() => {
+            if(!this.paymentAmount){
+              this.paymentMessage = 'No amount entered!'
+          }  
+         else if(this.paymentAmount >= this.cart.total ) {
+              this.paymentMessage = 'Payment successful!'
+              this.message = 'Paid'
+
+              setTimeout(() => {
+                this.checkout = false;
+                this.cart.total= 0
+           },3000);
+
+
+          } else {
+              this.paymentMessage = 'insufficient amount!'  
+              
+              
+          }  
+          
+           
+          } )
+          //.catch(err => alert(err));
+
+  },
 
     }
 });

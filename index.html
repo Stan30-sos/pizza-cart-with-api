@@ -37,6 +37,11 @@ table {
     
 
 }
+.message{
+    padding: 1em;
+    font-weight: bold;
+    background-color: yellow;
+}
 </style>
 </head>
 <body>
@@ -73,6 +78,23 @@ table {
                             <td x-text="pizza.total"></td>
                         </tr>
                     </template>
+                    <tr>
+                        <td colspan="2">
+
+                            <div x-show="checkout">
+                                <div class="message" x-text="paymentMessage"></div>
+                                <div>
+                                    <label for="input">payment amount</label>
+                                    <input class="input" type="number" placeholder="amount" x-model="paymentAmount">
+                                    <button @click="pay" class="btn">Checkout</button>
+                                </div>
+                            </div>
+                           
+                        </td>
+                        <td>
+                 <button x-show="cart.total > 0" @click="checkout=true" class="btn">pay</button>
+                        </td>
+                    </tr>
                 </table>
             </div>
         </div>
