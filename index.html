@@ -27,13 +27,13 @@ td {
 }
 table {
 
-    width: 85%;
+    width: 90%;
 }
 .cartContent{
     background-color: blue;
     padding: 1em;
     margin: 0.2em;
-    width: 22em;
+    width: 25em;
     
 
 }
@@ -41,6 +41,14 @@ table {
     padding: 1em;
     font-weight: bold;
     background-color: yellow;
+}
+.featured-items{
+    padding: 1em;
+    margin: 1em;
+}
+.Featured{
+    display: flex;
+    background-color: antiquewhite;
 }
 </style>
 </head>
@@ -99,9 +107,32 @@ table {
             </div>
         </div>
 
+        <div class="Featured">
+            <template x-for="pizza in cart.pizzas">
+                <div class="featured-items">
+                <div>
+                    <h3 x-text="pizza.flavour"></h3>
+                </div>
+                <img x-bind:src="pizzaImage(pizza)" alt="">
+                <div>
+                    <h3 x-text="pizza.size"></h3>
+                </div>
+                <div>
+                    <h3 x-text="pizza.price"></h3>
+                </div>
+                <button @click="add(pizza)">Buy</button>
+            </div>
+
+            </template>
+
+        </div>
+
         <table>
             <template x-for="pizza in pizzaList">
                 <tr>
+                    <td>
+                        <img x-bind:src="pizzaImage(pizza)" height="30" alt="">
+                    </td>
                     <td x-text="pizza.flavour"></td>
                     <td x-text="pizza.size"></td>
                     <td x-text="pizza.price"></td>
