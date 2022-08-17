@@ -47,8 +47,10 @@ table {
     margin: 1em;
 }
 .Featured{
+
     display: flex;
-    background-color: antiquewhite;
+    background-color: aqua;
+    width: auto;
 }
 </style>
 </head>
@@ -113,7 +115,7 @@ table {
                 <div>
                     <h3 x-text="pizza.flavour"></h3>
                 </div>
-                <img x-bind:src="pizzaImage(pizza)" alt="">
+                <img x-bind:src="pizzaImage(pizza)" height="60" alt="">
                 <div>
                     <h3 x-text="pizza.size"></h3>
                 </div>
