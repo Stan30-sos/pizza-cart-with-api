@@ -52,10 +52,19 @@ document.addEventListener('alpine:init', () => {
         featuredPizzas(){
           return 
           axios.get('https://pizza-cart-api.herokuapp.com/api/pizza-cart/featured')
+               .then((result) => {
+                 pizza.length <= 3     
+               });
         },
+
         postfeaturedPizzas(){
           return
           axios.post('https://pizza-cart-api.herokuapp.com/api/pizzas/featured')
+        },
+
+        activeCart(){
+          return
+          axios.get('https://pizza-cart-api.herokuapp.com/api/pizza-cart/username/:username/active')
         },
 
 
@@ -68,6 +77,7 @@ document.addEventListener('alpine:init', () => {
         paymentAmount: 0,
         paymentMessage: '',
         featuredItems: '',
+        
 
         add(pizza){
 
