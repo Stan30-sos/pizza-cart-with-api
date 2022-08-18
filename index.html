@@ -33,7 +33,7 @@ table {
     background-color: blue;
     padding: 1em;
     margin: 0.2em;
-    width: 30em;
+    width: 40em;
     
 
 }
@@ -108,7 +108,8 @@ table {
                 </table>
             </div>
         </div>
-
+        
+        <div x-show="display">
         <div class="Featured">
             <template x-for="pizza in cart.pizzas">
                 <div class="featured-items">
@@ -128,6 +129,7 @@ table {
             </template>
 
         </div>
+    </div>
 
         <table>
             <template x-for="pizza in pizzaList">

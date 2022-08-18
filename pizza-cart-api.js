@@ -77,6 +77,7 @@ document.addEventListener('alpine:init', () => {
         paymentAmount: 0,
         paymentMessage: '',
         featuredItems: '',
+        display: true,
         
 
         add(pizza){
@@ -136,7 +137,9 @@ document.addEventListener('alpine:init', () => {
 
               setTimeout(() => {
                 this.checkout = false;
-                this.cart.total= 0
+                this.cart.total= 0;
+                this.userName="";
+                this.display=false;
            },3000);
 
 
